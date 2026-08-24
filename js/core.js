@@ -22,7 +22,7 @@ export function appRoot(){
 export function setupPendingView(){
   return `<main class="login-page"><section class="login-card">
     <img src="assets/img/logo_ucc_horizontal.png" alt="Universidad Cooperativa de Colombia">
-    <h1>Digiturno Jurídico</h1>
+    <h1>Consultorio Jurídico</h1>
     <div class="alert alert-info">Falta configurar Supabase.</div>
     <p>Abra <b>js/supabase-config.js</b>, pegue la URL y la llave pública anon/publishable, y cambie <b>SUPABASE_CONFIG_READY</b> a <b>true</b>.</p>
   </section></main>`;
