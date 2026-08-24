@@ -21,7 +21,7 @@ import { $, appRoot, initSupabase, loadProfile, appConfig, currentSession, escap
 function renderLogin(){
   appRoot().innerHTML = `<main class="login-page"><section class="login-card">
     <img src="${appConfig?.logo || 'assets/img/logo_ucc_horizontal.png'}" alt="UCC">
-    <h1>Digiturno Jurídico</h1>
+    <h1>Consultorio Jurídico</h1>
     <p>Acceso para administradores y asesores.</p>
     <div id="loginMsg"></div>
     <form id="loginForm" class="form-stack">
