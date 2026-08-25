@@ -12,7 +12,7 @@ async function renderServices(c){
 
   c.innerHTML = `<div class="topbar"><div><h1>Servicios</h1><p>Gestión de servicios y prefijos visibles en el Kiosco.</p></div></div>
   <section class="grid two-columns">
-    <article class="panel"><h2>Crear / editar</h2>
+    <article class="panel"><h2>Crear / Editar</h2>
       <form id="serviceForm" class="form-stack">
         <input type="hidden" name="id_servicio">
         <label>Nombre<input name="nombre_servicio" required></label>
