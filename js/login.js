@@ -40,10 +40,47 @@ function renderLogin(){
     const fd = new FormData(e.target);
     const msg = $('#loginMsg');
     msg.innerHTML = '';
-    const { error } = await supabase.auth.signInWithPassword({
-      email: fd.get('email'),
-      password: fd.get('password')
-    });
+let email = fd.get('email').trim();
+
+if (!email.includes('@')) {
+  email = `${email}@digiturno.local`;
+}
+
+const { data, error } = await supabase.auth.signInWithPassword({
+  email: email,
+  password: fd.get('password')
+});
+
+if (error) {
+  msg.innerHTML = `<div class="alert alert-danger">${escapeHtml(error.message)}</div>`;
+  return;
+}
+
+const { data: perfil, error: perfilError } = await supabase
+  .from('perfiles')
+  .select('rol, estado')
+  .eq('id_usuario', data.user.id)
+  .maybeSingle();
+
+if (perfilError || !perfil) {
+  msg.innerHTML = `<div class="alert alert-danger">No se encontró perfil activo para este usuario.</div>`;
+  return;
+}
+
+if (perfil.estado !== 'Activo') {
+  msg.innerHTML = `<div class="alert alert-danger">El usuario está inactivo.</div>`;
+  return;
+}
+
+if (perfil.rol === 'Administrador') {
+  window.location.href = 'dashboard.html';
+} else if (perfil.rol === 'Asesor') {
+  window.location.href = 'asesor.html';
+} else if (perfil.rol === 'Pantalla') {
+  window.location.href = 'pantalla.html';
+} else {
+  msg.innerHTML = `<div class="alert alert-danger">Rol no autorizado.</div>`;
+}
     if (error) {
       msg.innerHTML = `<div class="alert alert-danger">${escapeHtml(error.message)}</div>`;
       return;
