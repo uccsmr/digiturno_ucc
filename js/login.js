@@ -48,6 +48,38 @@ function renderLogin(){
       msg.innerHTML = `<div class="alert alert-danger">${escapeHtml(error.message)}</div>`;
       return;
     }
+    async function redirigirSegunRol(userId) {
+  const { data: perfil, error } = await supabase
+    .from('perfiles')
+    .select('rol, estado')
+    .eq('id_usuario', userId)
+    .maybeSingle();
+
+  if (error || !perfil) {
+    alert('No se encontró perfil para este usuario.');
+    await supabase.auth.signOut();
+    window.location.href = 'login.html';
+    return;
+  }
+
+  if (perfil.estado !== 'Activo') {
+    alert('El usuario está inactivo.');
+    await supabase.auth.signOut();
+    window.location.href = 'login.html';
+    return;
+  }
+
+  if (perfil.rol === 'Administrador') {
     window.location.href = 'dashboard.html';
+  } else if (perfil.rol === 'Asesor') {
+    window.location.href = 'asesor.html';
+  } else if (perfil.rol === 'Pantalla') {
+    window.location.href = 'pantalla.html';
+  } else {
+    alert('Rol no autorizado.');
+    await supabase.auth.signOut();
+    window.location.href = 'login.html';
+  }
+}
   });
 }
