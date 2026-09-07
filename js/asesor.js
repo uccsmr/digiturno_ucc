@@ -70,7 +70,7 @@ async function loadAdvisor(){
   box.innerHTML = `<section class="grid two-columns">
     <article class="panel"><div class="panel-header"><h2>Turno actual</h2><span class="badge">${escapeHtml(currentProfile.puntos_atencion?.nombre_punto || 'Sin punto')}</span></div>${renderCurrentTurn(active)}</article>
     <article class="panel"><h2>Acciones</h2><div class="action-row">
-      <button class="btn btn-primary" id="btnCallNext" ${active ? 'disabled' : ''}>Llamar siguiente</button>
+      <button class="btn btn-primary" id="btnCallNext" ${active ? 'disabled' : ''}>Llamar siguiente.</button>
       <button class="btn btn-warning" id="btnRepeat" ${!active ? 'disabled' : ''}>Repetir llamado</button>
       <button class="btn btn-secondary" id="btnStart" ${!active || active.estado !== 'Llamado' ? 'disabled' : ''}>Usuario presente</button>
       <button class="btn btn-primary" id="btnFinish" ${!active ? 'disabled' : ''}>Finalizar</button>
