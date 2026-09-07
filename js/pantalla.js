@@ -70,7 +70,7 @@ async function renderScreen(){
                   </div>
                 </div>
               </div>
-            </section>
+            </section> 
 
             <section id="currentCall" class="tv-call-strip" aria-live="polite">
               <div class="tv-call-icon" aria-hidden="true">🔊</div>
