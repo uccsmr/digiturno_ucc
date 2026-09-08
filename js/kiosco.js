@@ -27,7 +27,7 @@ async function renderKiosk(){
         <h1>Solicite su turno</h1>
         <p>Seleccione el servicio que necesita.</p>
       </div>
-      <a class="btn btn-outline" href="login.html">Administración</a>
+     // <a class="btn btn-outline" href="login.html">Administración</a>
     </header>
     <section class="service-grid">
       ${(services || []).map(s => `<button class="service-button" style="--service-color:${s.color || '#0A84FF'}" data-service="${s.id_servicio}">
