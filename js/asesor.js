@@ -12,7 +12,7 @@ async function renderAdvisor(c){
     <section class="advisor-shell">
       <header class="advisor-hero">
         <div class="advisor-title-block">
-          <div class="advisor-icon" aria-hidden="true">👥</div>
+          <div class="advisor-icon" aria-hidden="true"></div>
           <div>
             <h1>Panel Asesor</h1>
             <p>Gestión del llamado, atención y cierre de turnos del Consultorio Jurídico.</p>
